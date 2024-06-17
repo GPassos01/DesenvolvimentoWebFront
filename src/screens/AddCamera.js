@@ -1,5 +1,5 @@
 import { useState } from 'react'; 
-
+import axios from "axios";
 /*
 {
   name:
@@ -18,16 +18,45 @@ function AddItems(props){
     const [classification, setClassification] = useState("")
     const [capacity, setCapacity] = useState("")
 
-    const addItemsButtonPressed = () => {
-      props.addItems({
-            "name": name,
-            "description": description,
-            "date" : date,
-            "time" : time,
-            "type": type,
-            "classification": classification,
-            "capacity": capacity
-        })
+    const addItemsButtonPressed = async () => {
+      // props.addItems({
+      //       "name": name,
+      //       "description": description,
+      //       "date" : date,
+      //       "time" : time,
+      //       "type": type,
+      //       "classification": classification,
+      //       "capacity": capacity
+      //   })
+
+        const request_body = {
+          "nome":"TESTE",
+          "descricao":"TESTE1",
+          "data":"2024-10-01",
+          "horario_inicio":"22:08:28",
+          "horario_fim": "22:08:28",
+          "classificacao_indicativa":"1",
+          "lotacao_maxima":200,
+          //"endereco":
+          "organizador":1,
+        }
+        var token = localStorage.getItem("token");
+        console.log(token);
+        const config = {
+          headers: { Authorization: `Bearer ${token}` }
+        };
+
+        try {
+          // const response = "TESTE";
+          const response = await axios.post("http://localhost:8080/evento/", 
+            request_body,
+            config
+          );
+          console.log("Sucesso ao cadastrar Evento: ", response.data);
+          
+        } catch (error) {
+          console.error("Error signing up:", error);
+        }
 
     setName("")
     setDescription("")
