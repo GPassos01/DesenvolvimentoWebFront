@@ -22,6 +22,9 @@ import Logout from './screens/Logout.js';
 import InlineComponent from './screens/InlineComponent.js';
 import SearchCamera from './screens/SearchCamera.js';
 import AddCamera from './screens/AddCamera.js';
+import AddIngresso from './screens/AddIngresso.js';
+import AddLocal from './screens/AddLocal.js';
+import AddCompra from './screens/AddCompra.js';
 import ExemploCss from './screens/ExemploCss.js';
 
 const router = createBrowserRouter([
@@ -45,7 +48,19 @@ const router = createBrowserRouter([
               {
                 path: "addevento",
                 element: <AddCamera />
-              },              
+              },    
+              {
+                path: "addingresso",
+                element: <AddIngresso />
+              },
+              {
+                path: "addlocal",
+                element: <AddLocal />
+              },
+              {
+                path: "addcompra",
+                element: <AddCompra />
+              },
               {
                 path: "searchcamera",
                 element: <SearchCamera />
@@ -53,11 +68,11 @@ const router = createBrowserRouter([
               {
                 path: "exemplocss",
                 element: <ExemploCss />
-              },              
+              },
               {
                 path: "itens",
                 element: <ItemScreen />
-              },    
+              },
               {
                 path: "/item/:id",
                 element: <Item />
