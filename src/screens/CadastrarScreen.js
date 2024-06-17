@@ -5,6 +5,7 @@ export default function SignUpScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [role, setRole] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e) => {
@@ -17,14 +18,14 @@ export default function SignUpScreen() {
     const request_body = {
       "login": email,
       "password": password,
-      "role": "ADMIN"
+      "role": role
     }
     try {
       const response = await axios.post("http://localhost:8080/auth/register", 
         request_body
       );
       console.log("Signup successful!", response.data);
-      // Optionally, you can redirect the user to another page or show a success message here
+      
     } catch (error) {
       console.error("Error signing up:", error);
       // Handle error appropriately, e.g., display an error message to the user
@@ -65,6 +66,18 @@ export default function SignUpScreen() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
+        </div>
+        <div>
+          <label for="role">Tipo de usuário:</label>
+
+          <select name="role" 
+              id="role" 
+              onChange={(e) => setRole(e.target.value)}
+              required>
+            <option value="" selected="selected">Selecione</option>
+            <option value="ORGANIZADOR">ORGANIZADOR</option>
+            <option value="CLIENTE">CLIENTE</option>
+          </select>
         </div>
         <button type="submit">Sign Up</button>
       </form>
