@@ -20,19 +20,8 @@ function AddItems(props){
     const [organizador, setOrganizador] = useState("")
 
     //funcao disparada no onclick que está la embaixo
-    const addItemsButtonPressed = async () => {
-      // props.addItems({
-      //       "name": name,
-      //       "description": description,
-      //       "date" : date,
-      //       "time" : time,
-      //       "type": type,
-      //       "classification": classification,
-      //       "capacity": capacity
-      //   })
-
-        //pegar o local storage que vai ficar salvo depois que a gnt loga
-        var token = localStorage.getItem("token");
+    const getItemsButtonPressed = async () => {
+      var token = localStorage.getItem("token");
         console.log(token);
         const config = { //salvar esse token dentro dessa config
           headers: { Authorization: `Bearer ${token}` }
@@ -54,6 +43,40 @@ function AddItems(props){
           setTime(response.data.horario_fim.join(':'))
           setClassification(response.data.classificacao_indicativa)
           setCapacity(response.data.lotacao_maxima)
+
+        } catch (error) {
+          console.error("Error signing up:", error);
+        }
+
+    }
+
+    const addItemsButtonPressed = async () => {
+        const request_body = {
+          "nome":name,
+          "descricao":description,
+          "data":date,
+          "horario_inicio":time,
+          "horario_fim": time,
+          "classificacao_indicativa":classification,
+          "lotacao_maxima":capacity,
+          //"endereco":
+          "organizador_id":organizador
+        }
+
+        //pegar o local storage que vai ficar salvo depois que a gnt loga
+        var token = localStorage.getItem("token");
+        console.log(token);
+        const config = { //salvar esse token dentro dessa config
+          headers: {Authorization: `Bearer ${token}`}
+        };
+
+        try {
+          // const response = "TESTE";
+          const response = await axios.put(`http://localhost:8080/evento/${id}`,
+            request_body,
+            config
+          );
+          console.log("Sucesso ao atualizar Evento: ", response.data);
 
         } catch (error) {
           console.error("Error signing up:", error);
@@ -110,6 +133,9 @@ function AddItems(props){
           <label>Organizador: </label>
           <input id="capacity-field" className='form-control' type="text" value={organizador} onChange={ (e) => setOrganizador(e.target.value) }/>      
         </div>      
+        <div className='row'>
+          <button type="button" className='btn btn-dark mt-3' onClick={getItemsButtonPressed}>Get</button>
+        </div>
         <div className='row'>
           <button type="button" className='btn btn-dark mt-3' onClick={addItemsButtonPressed}>Atualizar</button>
         </div>
