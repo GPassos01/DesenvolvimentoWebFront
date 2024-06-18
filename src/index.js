@@ -22,6 +22,8 @@ import Logout from './screens/Logout.js';
 import InlineComponent from './screens/InlineComponent.js';
 import SearchCamera from './screens/SearchCamera.js';
 import AddEvento from './screens/AddEvento.js';
+import DeleteEvento from './screens/DeleteEvento.js';
+import UpdateEvento from './screens/UpdateEvento.js';
 import GetEventoId from './screens/GetEventoId.js';
 import GetEventoAll from './screens/GetEventoAll.js';
 import AddIngresso from './screens/AddIngresso.js';
@@ -50,6 +52,14 @@ const router = createBrowserRouter([
               {
                 path: "addevento",
                 element: <AddEvento />
+              },
+              {
+                path: "deleteevento",
+                element: <DeleteEvento />
+              },
+              {
+                path: "updateevento",
+                element: <UpdateEvento />
               },    
               {
                 path: "geteventoId",

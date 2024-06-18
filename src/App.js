@@ -32,6 +32,8 @@ function App() {
           <Nav.Link as={Link} to="/cadastrar">Sign up</Nav.Link>
           <Nav.Link as={Link} to="/logout">Logout</Nav.Link>
           <Nav.Link as={Link} to="/addevento">Add Evento</Nav.Link>
+          <Nav.Link as={Link} to="/deleteevento">Delete Evento</Nav.Link>
+          <Nav.Link as={Link} to="/updateevento">Atualizar Evento</Nav.Link>
           <Nav.Link as={Link} to="/addingresso">Add Ingresso</Nav.Link>
           <Nav.Link as={Link} to="/addlocal">Add Local</Nav.Link>
           <Nav.Link as={Link} to="/addcompra">Add Compra</Nav.Link>
