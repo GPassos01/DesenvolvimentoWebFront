@@ -12,15 +12,9 @@ import ErrorScreen from './screens/ErrorScreen.js';
 import Home from './screens/Home2.js';
 import Contact from './screens/Contact.js';
 
-import ItemScreen from './screens/ItemScreen.js';
-import Item from './screens/Item.js';
-
 import CadastrarScreen from './screens/CadastrarScreen.js';
 import Login from './screens/Login.js';
-import CamerasScreen from './screens/CamerasScreen.js';
 import Logout from './screens/Logout.js';
-import InlineComponent from './screens/InlineComponent.js';
-import SearchCamera from './screens/SearchCamera.js';
 import AddEvento from './screens/AddEvento.js';
 import DeleteEvento from './screens/DeleteEvento.js';
 import UpdateEvento from './screens/UpdateEvento.js';
@@ -29,7 +23,6 @@ import GetEventoAll from './screens/GetEventoAll.js';
 import AddIngresso from './screens/AddIngresso.js';
 import AddLocal from './screens/AddLocal.js';
 import AddCompra from './screens/AddCompra.js';
-import ExemploCss from './screens/ExemploCss.js';
 
 const router = createBrowserRouter([
     {
@@ -44,11 +37,7 @@ const router = createBrowserRouter([
               {
                 path: "contact",
                 element: <Contact />
-              },
-              {
-                path: "inlinecomponent",
-                element: <InlineComponent />
-              },              
+              },            
               {
                 path: "addevento",
                 element: <AddEvento />
@@ -82,41 +71,21 @@ const router = createBrowserRouter([
                 element: <AddCompra />
               },
               {
-                path: "searchcamera",
-                element: <SearchCamera />
-              },
+                path: "/login",
+                element: <Login />
+              },              
               {
-                path: "exemplocss",
-                element: <ExemploCss />
-              },
+                  path: "/cadastrar",
+                  element: <CadastrarScreen />
+              },               
               {
-                path: "itens",
-                element: <ItemScreen />
-              },
-              {
-                path: "/item/:id",
-                element: <Item />
-            },
-            {
-              path: "/login",
-              element: <Login />
-            },              
-            {
-                path: "/cadastrar",
-                element: <CadastrarScreen />
-            },  
-            {
-                path: "/cameras",
-                element: <CamerasScreen />
-            },                  
-            {
-                path: "/logout",
-                element: <Logout />
-            },                              
+                  path: "/logout",
+                  element: <Logout />
+              },                              
               {
                 path:"oldpage",
                 element: <Navigate to="/" />
-            }
+              }
 
         ]
     }

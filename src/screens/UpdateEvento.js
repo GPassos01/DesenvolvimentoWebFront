@@ -10,7 +10,7 @@ import axios from "axios";
 */
 function AddItems(props){
 
-    const [id, setId] = useState("")
+    const [id, setId] = useState(0)
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [date, setDate] = useState("")
@@ -52,6 +52,7 @@ function AddItems(props){
 
     const addItemsButtonPressed = async () => {
         const request_body = {
+          "id":id,
           "nome":name,
           "descricao":description,
           "data":date,
@@ -72,6 +73,8 @@ function AddItems(props){
 
         try {
           // const response = "TESTE";
+          console.log(id)
+          console.log(request_body)
           const response = await axios.put(`http://localhost:8080/evento/${id}`,
             request_body,
             config
