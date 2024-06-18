@@ -14,10 +14,11 @@ function AddItems(props){
     const [description, setDescription] = useState("")
     const [date, setDate] = useState("")
     const [time, setTime] = useState("")
-    const [type, setType] = useState("")
     const [classification, setClassification] = useState("")
     const [capacity, setCapacity] = useState("")
+    const [organizador, setOrganizador] = useState("")
 
+    //funcao disparada no onclick que está la embaixo
     const addItemsButtonPressed = async () => {
       // props.addItems({
       //       "name": name,
@@ -29,20 +30,22 @@ function AddItems(props){
       //       "capacity": capacity
       //   })
 
+      //json que a gtn colocava la no postgres
         const request_body = {
-          "nome":"TESTE",
-          "descricao":"TESTE1",
-          "data":"2024-10-01",
-          "horario_inicio":"22:08:28",
-          "horario_fim": "22:08:28",
-          "classificacao_indicativa":"1",
-          "lotacao_maxima":200,
+          "nome":name,
+          "descricao":description,
+          "data":date,
+          "horario_inicio":time,
+          "horario_fim": time,
+          "classificacao_indicativa":classification,
+          "lotacao_maxima":capacity,
           //"endereco":
-          "organizador":1,
+          "organizador_id":organizador
         }
+        //pegar o local storage que vai ficar salvo depois que a gnt loga
         var token = localStorage.getItem("token");
         console.log(token);
-        const config = {
+        const config = { //salvar esse token dentro dessa config
           headers: { Authorization: `Bearer ${token}` }
         };
 
@@ -53,18 +56,21 @@ function AddItems(props){
             config
           );
           console.log("Sucesso ao cadastrar Evento: ", response.data);
-          
+
         } catch (error) {
           console.error("Error signing up:", error);
         }
 
-    setName("")
-    setDescription("")
-    setDate("")
-    setTimeout("")
-    setType("")
-    setClassification("")
-    setCapacity("")
+
+        //fazer uma tela para listar 
+
+      // apaga os campos
+      // setName("")
+      // setDescription("")
+      // setDate("")
+      // setTimeout("")
+      // setClassification("")
+      // setCapacity("")
 
     }
 
@@ -84,16 +90,12 @@ function AddItems(props){
         </div>  
         <div className='row'>
           <label>Data: </label>
-          <input id="date-field" className='form-control' type="text" placeholder="XX/YY/NNNN..."value={date} onChange={ (e) => setDate(e.target.value)}/>
+          <input id="date-field" className='form-control' type="date" value={date} onChange={ (e) => setDate(e.target.value)}/>
         </div>  
         <div className='row'>
           <label>Horário: </label>
-          <input id="time-field" className='form-control' type="text" value={time} onChange={ (e) => setTime(e.target.value)}/>
+          <input id="time-field" className='form-control' type="time" value={time} onChange={ (e) => setTime(e.target.value)}/>
         </div>       
-        <div className='row'>
-          <label>Tipo: </label>
-          <input id="type-field" className='form-control' type="text" value={type} onChange={ (e) => setType(e.target.value) }/>
-        </div>
         <div className='row'>
           <label>Classificação indicativa: </label>
           <input id="classification-field" className='form-control' type="text" value={classification} onChange={ (e) => setClassification(e.target.value) }/>      
@@ -101,6 +103,10 @@ function AddItems(props){
         <div className='row'>
           <label>Lotação máxima: </label>
           <input id="capacity-field" className='form-control' type="text" value={capacity} onChange={ (e) => setCapacity(e.target.value) }/>      
+        </div>      
+        <div className='row'>
+          <label>Organizador: </label>
+          <input id="capacity-field" className='form-control' type="text" value={organizador} onChange={ (e) => setOrganizador(e.target.value) }/>      
         </div>      
         <div className='row'>
           <button type="button" className='btn btn-dark mt-3' onClick={addItemsButtonPressed}>Adicionar</button>

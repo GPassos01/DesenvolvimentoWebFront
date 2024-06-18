@@ -21,7 +21,9 @@ import CamerasScreen from './screens/CamerasScreen.js';
 import Logout from './screens/Logout.js';
 import InlineComponent from './screens/InlineComponent.js';
 import SearchCamera from './screens/SearchCamera.js';
-import AddCamera from './screens/AddCamera.js';
+import AddEvento from './screens/AddEvento.js';
+import GetEventoId from './screens/GetEventoId.js';
+import GetEventoAll from './screens/GetEventoAll.js';
 import AddIngresso from './screens/AddIngresso.js';
 import AddLocal from './screens/AddLocal.js';
 import AddCompra from './screens/AddCompra.js';
@@ -47,7 +49,15 @@ const router = createBrowserRouter([
               },              
               {
                 path: "addevento",
-                element: <AddCamera />
+                element: <AddEvento />
+              },    
+              {
+                path: "geteventoId",
+                element: <GetEventoId />
+              },    
+              {
+                path: "geteventoAll",
+                element: <GetEventoAll />
               },    
               {
                 path: "addingresso",

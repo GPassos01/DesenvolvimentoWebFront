@@ -17,7 +17,7 @@ export default function SignUpScreen() {
 
     const request_body = {
       "login": email,
-      "password": password,
+      "senha": password,
       "role": role
     }
     try {

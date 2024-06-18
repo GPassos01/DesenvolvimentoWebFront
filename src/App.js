@@ -35,6 +35,8 @@ function App() {
           <Nav.Link as={Link} to="/addingresso">Add Ingresso</Nav.Link>
           <Nav.Link as={Link} to="/addlocal">Add Local</Nav.Link>
           <Nav.Link as={Link} to="/addcompra">Add Compra</Nav.Link>
+          <Nav.Link as={Link} to="/geteventoid">Ver Evento</Nav.Link>
+          <Nav.Link as={Link} to="/geteventoall">Todos Eventos</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
